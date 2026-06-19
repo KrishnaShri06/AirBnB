@@ -44,7 +44,7 @@ const sessionOption = {
         httpOnly: true,
     }
 }
-
+//session codes
 app.use(session(sessionOption));
 app.use(flash());
 

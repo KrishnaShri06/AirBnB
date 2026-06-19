@@ -1,0 +1,79 @@
+<% layout("layouts/boilerplate") %>
+    <div class="row">
+        <div class="col-8 offset-4">
+            <!-- <h1>SEE PROPERTY DETAILS</h1> -->
+        </div>
+
+
+        <div class="col-6 offset-4">
+            <div class="card listing-card" style="width: 25rem;">
+                <h2 style="text-align: center;">
+                    <%= listing.title %>
+                </h2>
+                <img src="<%= listing.image %>" class="card-img-top show-img" alt="...">
+                <div class="card-body">
+                    <p class="card-text">
+                        <%= listing.description %><br>
+                            ₹ <%= listing.price.toLocaleString("en-IN") %> /night<br>
+                                <%= listing.location %><br>
+                                    <%= listing.country %><br>
+                    </p>
+                </div>
+                <div class="btns">
+                    <button class="btn btn-dark"><a href="/listings/<%= listing._id %>/edit">Edit</a></button>
+                    <button class="btn btn-danger"><a href="/listings/<%= listing._id %>/delete">Delete</a></button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <hr>
+        <div class="col-8 offset-3">
+            <h2>Leave a Review</h2>
+            <form action="/listings/<%= listing._id %>/reviews" method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <input placeholder="enter rating" name="review[rating]" id="rating" type="range" min="1" max="5"
+                        class="form-range red-slider" required>
+                    <div class="invalid-feedback">
+                        Please enter rating.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Comment</label>
+                    <textarea placeholder="enter comment" name="review[comment]" id="comment" type="text"
+                        class="form-control" required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter comment.
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-danger mb-3">Submit</button>
+            </form>
+        </div>
+        <hr>
+        <div class="col-8 offset-3">
+            <h3>All Reviews</h3>
+            <div class="row">
+                <% for(let review of listing.reviews) { %>
+                    <div class="card col-5 ms-3 mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">John Doe</h5>
+                            <p class="card-text">
+                                <%=review.comment %>
+                            </p>
+                            <p class="card-text">
+                                <%=review.rating %> stars
+                            </p>
+                        </div>
+                        <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>" method="post">
+                            <button type="submit" class="btn btn-sm btn-dark ms-3 mb-3">Delete</button>
+                        </form>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+
+    </div>

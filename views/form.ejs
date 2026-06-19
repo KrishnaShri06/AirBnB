@@ -1,0 +1,50 @@
+<% layout("layouts/boilerplate") %>
+
+
+    <div class="row">
+        <div class="col-6 col-md-8 offset-3">
+            <h3>List Your Property with us!!</h3>
+            <form action="/listings" method="post" class="needs-validation" novalidate>
+                <div class="mb-3"><label for="title">Title<span style="color: red;">*</span></label>
+                    <input placeholder="enter title" name="title" type="text" id="title" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please enter title.
+                    </div>
+                </div>
+                <div class="mb-3"> <label for="description">Description<span style="color: red;">*</span></label>
+                    <textarea placeholder="enter description" name="description" type="text" id="description"
+                        class="form-control" required></textarea>
+                    <div class="invalid-feedback">
+                        Please enter description.
+                    </div>
+                </div>
+                <div class="mb-3"> <label for="image">Image</label>
+                    <input placeholder="enter image url/link" name="image" type="text" id="image" class="form-control">
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4"><label for="price">Price<span style="color: red;">*</span></label>
+                        <input placeholder="enter price" name="price" type="number" id="price" class="form-control"
+                            required>
+                        <div class="invalid-feedback">
+                            Please enter price.
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-8"><label for="location">Location<span style="color: red;">*</span></label>
+                        <input placeholder="enter location" name="location" type="text" id="location"
+                            class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please enter location.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3"><label for="country">Country<span style="color: red;">*</span></label>
+                    <input placeholder="enter country" name="country" type="text" id="country" class="form-control"
+                        required>
+                    <div class="invalid-feedback">
+                        Please enter country.
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger mb-3">Submit</button>
+            </form>
+        </div>
+    </div>

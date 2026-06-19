@@ -1,0 +1,57 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head> -->
+<% layout("layouts/boilerplate") %>
+
+    <h1 style="margin-left: 80px;">All Listings</h1>
+    <!-- <button><a href="/listings/new">Create New Listing</a></button> -->
+    <!-- <div class="outer-box">
+            <% for (listing of allListing){ %>
+                <div class="card">
+                    <h2>
+                        <a href="/listings/<%= listing._id %>">
+                            <%= listing.title %>
+                        </a>
+                    </h2>
+                    <p>INR <%= listing.price %>
+                    </p>
+                    <p>
+                        <%= listing.location %>
+                    </p>
+                    <p>
+                        
+                        <%= listing.country %>
+                    </p>
+                    <p>
+                        <%= listing.description %>
+                    </p>
+
+                </div>
+                <% } %>
+        </div> -->
+    <div class="outer">
+        <% for (listing of allListing){ %>
+            <div class="card listing-card" style="width: 18rem;"
+                onclick="window.location.href='/listings/<%= listing._id %>'">
+                <img src="<%= listing.image %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">
+                        <b> <a href="/listings/<%= listing._id %>">
+                                <%= listing.title %>
+                            </a></b> <br>
+                        ₹<%= listing.price.toLocaleString("en-IN") %> /night
+                    </p>
+                </div>
+            </div>
+            <% } %>
+    </div>
+
+
+    <!-- 
+</html> -->
